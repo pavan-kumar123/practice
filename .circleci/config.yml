@@ -9,14 +9,14 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-          account-url: "080475572023.dkr.ecr.us-east-1.amazonaws.com/practice"
-          aws-access-key-id: "AKIARFPFXY43R65PWGEW"
-          aws-secret-access-key: "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"
-          create-repo: false
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
           # Name of dockerfile to use. Defaults to Dockerfile.
           dockerfile: Dockerfile
           # AWS_REGION_ENV_VAR_NAME
-          region: "us-east-1"
+          region: AWS_DEFAULT_REGION
           # myECRRepository
           repo: "practice"
           # myECRRepoTag
