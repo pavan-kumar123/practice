@@ -2,22 +2,22 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.2.0
-  aws-ecs: circleci/aws-ecs@0.0.11
+  #aws-ecs: circleci/aws-ecs@0.0.11
 
 workflows:
 # Log into AWS, build and push image to Amazon ECR
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-          account-url: 080475572023.dkr.ecr.us-east-1.amazonaws.com/practice
-          aws-access-key-id: AKIARFPFXY43R65PWGEW
-          aws-secret-access-key: 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
+          account-url: "080475572023.dkr.ecr.us-east-1.amazonaws.com/practice"
+          aws-access-key-id: "AKIARFPFXY43R65PWGEW"
+          aws-secret-access-key: "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"
           create-repo: false
           # Name of dockerfile to use. Defaults to Dockerfile.
           dockerfile: Dockerfile
           # AWS_REGION_ENV_VAR_NAME
-          region: us-east-1
+          region: "us-east-1"
           # myECRRepository
-          repo: practice
+          repo: "practice"
           # myECRRepoTag
-          tag: latest
+          tag: "latest"
