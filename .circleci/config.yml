@@ -1,33 +1,18 @@
 version: 2.1
 
-orbs:
-  aws-ecr: circleci/aws-ecr@6.2.0
-  #aws-ecs: circleci/aws-ecs@0.0.11
-
-workflows:
-# Log into AWS, build and push image to Amazon ECR
-  build_and_push_image:
-    jobs:
-      #- aws-ecr/installing-dependies:
-         #commands:
-         #steps:
-          #- checkout
-          #- run:sudo apt-get update -y \ 
-          #    apt install maven -y
-           
-    
-    
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          run: sudo apt-get update -y
-          # Name of dockerfile to use. Defaults to Dockerfile.
-          dockerfile: Dockerfile
-          # AWS_REGION_ENV_VAR_NAME
-          region: AWS_DEFAULT_REGION
-          # myECRRepository
-          repo: "practice"
-          # myECRRepoTag
-          tag: "latest"
+jobs:
+  build: # name of your job
+    machine: # executor type
+      image: ubuntu-2004:202010-01
+      steps:
+        - checkout
+        - run:
+          name: Install aws-cli & configuring
+          command: |
+            sudo apt-get install aws-cli -y \
+            echo "$AWS_ACCESS_KEY_ID" > .aws/config
+            echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
+         - run :
+           name: excuting docker image
+           command: |
+             docker build -t $AWS_ECR_ACCOUNT_URL/genie-ci:latest .
