@@ -7,15 +7,15 @@ jobs:
       steps:
         - checkout
         - run:
-          name: Install aws-cli  configuring
-          command: |
-            sudo apt-get install aws-cli -y \
-            echo "$AWS_ACCESS_KEY_ID" > .aws/config
-            echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
+            name: Install aws-cli  configuring
+            command: |
+              sudo apt-get install aws-cli -y \
+              echo "$AWS_ACCESS_KEY_ID" > .aws/config
+              echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
          - run :
-           name: excuting docker image
-           command: |
-             docker build -t $AWS_ECR_ACCOUNT_URL/genie-ci:latest .
+             name: excuting docker image
+             command: |
+               docker build -t $AWS_ECR_ACCOUNT_URL/genie-ci:latest .
              
              
              
