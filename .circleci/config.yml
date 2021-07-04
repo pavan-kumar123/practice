@@ -9,13 +9,11 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/installing dependies:
-        steps:
+         steps:
           - checkout
-          - run:
-            name: Install dependencies
-            command: |
-              sudo apt-get update -y 
+          - run:sudo apt-get update -y \ 
               apt install maven -y
+           
     
     
       - aws-ecr/build-and-push-image:
