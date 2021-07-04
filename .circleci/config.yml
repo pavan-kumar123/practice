@@ -7,9 +7,10 @@ jobs:
     steps:
       - checkout
       - run: |
-            sudo apt-get install awscli -y 
-            echo "$AWS_ACCESS_KEY_ID" > .aws/config
-            echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
+            sudo apt update -y
+            sudo apt install awscli -y 
+            echo -e "$AWS_ACCESS_KEY_ID\n$AWS_SECRET_ACCESS_KEY\nus-east-1\n\n" | aws configure
+            sudo apt install maven -y
       - run: |
              docker build -t "$AWS_ECR_ACCOUNT_URL/genie-ci:latest" .
              
