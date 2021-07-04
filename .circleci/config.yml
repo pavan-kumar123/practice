@@ -4,14 +4,14 @@ jobs:
   build: # name of your job
     machine: # executor type
       image: ubuntu-2004:202010-01
-      steps:
-        - checkout
-        - run: |
-              sudo apt-get install aws-cli -y 
-              echo "$AWS_ACCESS_KEY_ID" > .aws/config
-              echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
-        - run: |
-               docker build -t "$AWS_ECR_ACCOUNT_URL/genie-ci:latest" .
+    steps:
+      - checkout
+      - run: |
+            sudo apt-get install aws-cli -y 
+            echo "$AWS_ACCESS_KEY_ID" > .aws/config
+            echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
+      - run: |
+             docker build -t "$AWS_ECR_ACCOUNT_URL/genie-ci:latest" .
              
              
              
