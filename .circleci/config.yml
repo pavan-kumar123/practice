@@ -8,14 +8,14 @@ workflows:
 # Log into AWS, build and push image to Amazon ECR
   build_and_push_image:
     jobs:
-      - installing dependies
-        steps:
+      - aws-ecr/installing dependies
+         steps:
            - checkout
-        - run:
-           name: Install dependencies
-           command: |
-              apt update
-              apt install maven
+          - run:
+            name: Install dependencies
+            command: |
+              sudo apt-get update -y 
+              apt install maven -y
     
     
       - aws-ecr/build-and-push-image:
