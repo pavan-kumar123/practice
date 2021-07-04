@@ -9,7 +9,7 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/installing dependies
-         steps:
+        # steps:
            - checkout
           - run:
             name: Install dependencies
