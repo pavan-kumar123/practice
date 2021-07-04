@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: |
-            sudo apt-get install aws-cli -y 
+            sudo apt-get install awscli -y 
             echo "$AWS_ACCESS_KEY_ID" > .aws/config
             echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
       - run: |
