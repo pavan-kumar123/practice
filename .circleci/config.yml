@@ -8,7 +8,7 @@ workflows:
 # Log into AWS, build and push image to Amazon ECR
   build_and_push_image:
     jobs:
-      - aws-ecr/installing dependies:
+      - aws-ecr/installing-dependies:
          steps:
           - checkout
           - run:sudo apt-get update -y \ 
