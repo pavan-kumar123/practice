@@ -12,7 +12,7 @@ jobs:
               sudo apt-get install aws-cli -y \
               echo "$AWS_ACCESS_KEY_ID" > .aws/config
               echo "$AWS_SECRET_ACCESS_KEY" >> .aws/config
-         - run :
+         - run:
              name: excuting docker image
              command: |
                docker build -t $AWS_ECR_ACCOUNT_URL/genie-ci:latest .
