@@ -16,3 +16,11 @@ jobs:
            name: excuting docker image
            command: |
              docker build -t $AWS_ECR_ACCOUNT_URL/genie-ci:latest .
+             
+             
+             
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build
