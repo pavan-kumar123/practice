@@ -12,9 +12,15 @@ jobs:
             echo -e "$AWS_ACCESS_KEY_ID\n$AWS_SECRET_ACCESS_KEY\nus-east-1\n\n" | aws configure
             sudo apt install maven -y
       - run: |
-             docker build -t "$AWS_ECR_ACCOUNT_URL/genie-ci:latest" .
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $AWS_ECR_ACCOUNT_URL  
+            docker build -t "$AWS_ECR_ACCOUNT_URL/genie-ci:latest" .
+            docker push "$AWS_ECR_ACCOUNT_URL/genie-ci:latest"
              
-             
+  
+  
+  
+  #deploy:
+    
              
 workflows:
   version: 2
