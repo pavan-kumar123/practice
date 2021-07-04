@@ -9,6 +9,7 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/installing-dependies:
+         commands:
          steps:
           - checkout
           - run:sudo apt-get update -y \ 
